@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// 1. IMPORTAMOS LOS COMPONENTES DE RUTA
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { Container, Typography, Button, AppBar, Toolbar, Box, Dialog, DialogContent } from '@mui/material';
 import { Login as LoginIcon, Logout as LogoutIcon, Home, Album, MusicNote } from '@mui/icons-material';
@@ -23,7 +22,7 @@ function App() {
   const handleLogout = () => {
     logout();
     setIsAuthenticated(false);
-    navigate('/'); // Al salir, volvemos al inicio
+    navigate('/');
   };
 
   return (
@@ -61,16 +60,16 @@ function App() {
         <DialogContent><Login onLoginSuccess={handleLoginSuccess} /></DialogContent>
       </Dialog>
 
-      {/* --- RUTAS (Aquí cambia el contenido según el link) --- */}
+      {/* --- RUTAS */}
       <Box sx={{ flexGrow: 1 }}>
         <Routes>
           
-          {/* RUTA 1: INICIO (Muestra Artistas) */}
+          {/* RUTA 1: INICIO */}
           <Route path="/" element={
             <Container maxWidth="xl" sx={{ mt: 4, pb: 5, textAlign: 'center' }}>
                 <Box sx={{ mb: 6, p: 4, background: 'linear-gradient(180deg, rgba(29,185,84,0.3) 0%, rgba(18,18,18,0) 100%)', borderRadius: 4 }}>
-                    <Typography variant="h2" fontWeight="bold" color="white">Tu Biblioteca</Typography>
-                    <Typography variant="h6" color="gray">Explora tus artistas favoritos</Typography>
+                    <Typography variant="h2" fontWeight="bold" color="white">Mi Biblioteca de Musica</Typography>
+                    <Typography variant="h6" color="gray">Artistas Añadidos</Typography>
                 </Box>
                 <ArtistsCrud isAuth={isAuthenticated} />
             </Container>
@@ -82,7 +81,7 @@ function App() {
           {/* RUTA 3: ÁLBUMES */}
           <Route path="/albums" element={
              <Container maxWidth="xl" sx={{ mt: 4, pb: 5 }}>
-                <Typography variant="h3" fontWeight="bold" color="white" mb={4} textAlign="center">Todos los Álbumes</Typography>
+                <Typography variant="h3" fontWeight="bold" color="white" mb={4} textAlign="center">Todos los Álbumes Añadidos</Typography>
                 <AlbumsCrud isAuth={isAuthenticated} />
              </Container>
           } />
@@ -90,7 +89,7 @@ function App() {
           {/* RUTA 4: CANCIONES */}
           <Route path="/songs" element={
              <Container maxWidth="xl" sx={{ mt: 4, pb: 5 }}>
-                <Typography variant="h3" fontWeight="bold" color="white" mb={4} textAlign="center">Todas las Canciones</Typography>
+                <Typography variant="h3" fontWeight="bold" color="white" mb={4} textAlign="center">Todas las Canciones añadidas</Typography>
                 <SongsCrud isAuth={isAuthenticated} />
              </Container>
           } />

@@ -1,16 +1,67 @@
-# React + Vite
+REACT: GESTOR DE MÚSICA (FRONTEND)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+DESCRIPCIÓN GENERAL
+Este repositorio contiene el cliente web (Frontend) para el Examen Final "Gestor de Música". Es una aplicación Single Page Application (SPA) construida con React, Material UI y Vite, que consume una API REST externa y maneja autenticación segura.
 
-Currently, two official plugins are available:
+CARACTERÍSTICAS IMPLEMENTADAS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Interfaz de Usuario y Componentes (Material UI)
+   - Diseño Responsivo: Adaptable a móviles y escritorio usando el Grid System de MUI.
+   - Componentes Reutilizables: ArtistCard, AlbumsCrud, SongsCrud.
+   - Feedback Visual: Uso de Modales (Dialogs), Chips para filtros y Spinners de carga.
+   - Navegación: Barra de navegación persistente con React Router.
 
-## React Compiler
+2. Consumo de API REST (Axios)
+   - CRUD Completo: Creación, lectura, actualización y eliminación de Artistas, Álbumes y Canciones.
+   - Filtrado Dinámico: Relación en cascada (Artista -> Álbumes -> Canciones).
+   - Servicios Separados: Lógica de negocio aislada en la carpeta /services.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Seguridad y Autenticación (OAuth 2.0)
+   - Login Seguro: Autenticación mediante credenciales contra Django OAuth Toolkit.
+   - Manejo de Tokens: Almacenamiento seguro de access_token y refresh_token.
+   - Interceptores: Inyección automática del token en cabeceras HTTP con Axios.
+   - Rutas Protegidas: Componente ProtectedRoute que restringe el acceso a usuarios no autenticados.
 
-## Expanding the ESLint configuration
+PRERREQUISITOS DEL SISTEMA
+Antes de iniciar, asegúrese de tener instalado:
+- Node.js v18 o superior
+- NPM (Node Package Manager)
+- Navegador Web Moderno (Chrome, Firefox, Edge)
+- Git
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+INSTALACIÓN DEL PROYECTO
+
+1. Clonar el repositorio:
+   git clone https://github.com/alanyandun-coder/FRONTEND-MUSICA.git
+
+2. Instalar dependencias:
+   npm install
+
+3. Ejecutar el servidor de desarrollo:
+   npm run dev
+
+VARIABLES DE ENTORNO (.env)
+Es necesario crear un archivo .env en la raíz con las siguientes credenciales:
+
+VITE_API_BASE_URL=http://127.0.0.1:8000
+VITE_CLIENT_ID=tu_client_id_de_django
+VITE_CLIENT_SECRET=tu_client_secret_de_django
+
+ESTRUCTURA DEL PROYECTO
+/src
+  /components      (Componentes visuales reutilizables)
+  /pages           (Vistas principales: Dashboard, Login, Detalle)
+  /services        (Lógica de conexión a la API)
+  .env             (Variables de entorno)
+  main.jsx         (Punto de entrada de React)
+
+SOLUCIÓN DE PROBLEMAS COMUNES
+- La página no carga los datos: Verifica que el servidor de Django (Backend) esté corriendo en el puerto 8000.
+- Error de CORS: Asegúrate de estar accediendo desde http://localhost:5173 y no desde una IP de red local.
+
+AUTOR
+Proyecto desarrollado por:
+- Nombre: Alan Yandun
+- Universidad: UISEk
+- Materia: Desarrollo de Aplicaciones Wed
+- Año: 2026
